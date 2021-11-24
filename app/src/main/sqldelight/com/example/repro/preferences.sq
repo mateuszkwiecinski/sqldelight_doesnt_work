@@ -1,0 +1,8 @@
+CREATE TABLE preference (
+  key TEXT NOT NULL PRIMARY KEY,
+  value TEXT NOT NULL
+);
+
+insert:
+INSERT INTO preference
+VALUES ?;
