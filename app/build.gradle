@@ -1,8 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'org.jetbrains.kotlin.kapt'
-    id 'com.squareup.sqldelight'
+    id 'com.starter.easylauncher' version '4.1.1'
 }
 
 android {
@@ -34,7 +33,6 @@ android {
 }
 
 dependencies {
-    implementation "com.squareup.sqldelight:android-driver:1.5.3"
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'com.google.android.material:material:1.4.0'

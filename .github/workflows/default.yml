@@ -4,11 +4,15 @@ on:
   pull_request:
   push:
 
+
 jobs:
   build:
     env:
       github_token: ${{ secrets.GITHUB_TOKEN }}
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ 11, 15, 16, 17 ]
     steps:
       - uses: actions/checkout@v2
         with:
@@ -17,9 +21,13 @@ jobs:
       - name: set up JDK
         uses: actions/setup-java@v2
         with:
-          distribution: 'adopt'
-          java-version: 11
+          distribution: 'temurin'
+          java-version: ${{ matrix.node }}
 
       - uses: gradle/gradle-build-action@v2
         with:
-          arguments: assemble
+          arguments: assemble --configuration-cache
+
+      - uses: gradle/gradle-build-action@v2
+        with:
+          arguments: assemble --configuration-cache
